@@ -9,6 +9,7 @@ namespace Golem.ShipCompliant.PublicPro.Tests
 {
     public class PublicPROTest : WebDriverTestBase
     {
+        //Here's a line
        private string publicproUrl = Config.GetConfigValue("PublicProUrl", "http://publicpro-staging.shipcompliant.com");
        private string permitnumber = Config.GetConfigValue("PermitNumber", "PERNOD RICARD USA, LLC");
        private string permittext = Config.GetConfigValue("PermitText", "NY-I-15204 - PERNOD RICARD USA, LLC");
