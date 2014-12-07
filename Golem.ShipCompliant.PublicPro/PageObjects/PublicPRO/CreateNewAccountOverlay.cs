@@ -28,7 +28,7 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects
         Element address1Textbox = new Element("Address1Textbox", By.XPath("//input[@name='registration.Supplier.Street1']"));
         Element address2Textbox = new Element("Address2Textbox", By.XPath("//input[@name='registration.Supplier.Street2']"));
         Element cityTextbox = new Element("CityTextbox", By.XPath("//input[@name='registration.Supplier.City']"));
-        public Dropdown stateDropdown = new Dropdown(By.XPath("//select[@name='registration.Supplier.State']"));
+        Dropdown stateDropdown = new Dropdown(By.XPath("//select[@name='registration.Supplier.State']"));
         Element zipTextbox = new Element("Zip", By.XPath("//input[@name='registration.Supplier.ZipCode']"));
         Element createMyAccountBtn = new Element("CreateMyAccountBtn", By.XPath("//button[@class='button button-blue prompt-registration']"));
 

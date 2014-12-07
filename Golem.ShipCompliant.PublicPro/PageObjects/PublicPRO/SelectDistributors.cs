@@ -48,6 +48,7 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects
         
         public SelectDistributors TypeDistributorNum(string text)
         {
+            Thread.Sleep(1000);
             distributorSearchField.SendKeys(text);
 
             return new SelectDistributors();

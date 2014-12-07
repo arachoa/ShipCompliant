@@ -80,17 +80,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PageObjects\CreateNewAccountOverlay.cs" />
-    <Compile Include="PageObjects\DetermineRequiredDocumentsOverlay.cs" />
-    <Compile Include="PageObjects\eSignatureOverlay.cs" />
-    <Compile Include="PageObjects\LandingPage.cs" />
-    <Compile Include="PageObjects\LicenseNumOverlay.cs" />
-    <Compile Include="PageObjects\ProductDetails.cs" />
-    <Compile Include="PageObjects\SelectCOLA.cs" />
-    <Compile Include="PageObjects\SelectDistributors.cs" />
-    <Compile Include="PageObjects\SelectState.cs" />
-    <Compile Include="PageObjects\SelectThisLabelOverlay.cs" />
-    <Compile Include="PageObjects\SupportingDocuments.cs" />
+    <Compile Include="PageObjects\PublicPRO\CreateNewAccountOverlay.cs" />
+    <Compile Include="PageObjects\PublicPRO\DetermineRequiredDocumentsOverlay.cs" />
+    <Compile Include="PageObjects\PublicPRO\eSignatureOverlay.cs" />
+    <Compile Include="PageObjects\PublicPRO\LandingPage.cs" />
+    <Compile Include="PageObjects\PublicPRO\LicenseNumOverlay.cs" />
+    <Compile Include="PageObjects\PublicPRO\ProductDetails.cs" />
+    <Compile Include="PageObjects\PublicPRO\Review.cs" />
+    <Compile Include="PageObjects\PublicPRO\SelectCOLA.cs" />
+    <Compile Include="PageObjects\PublicPRO\SelectDistributors.cs" />
+    <Compile Include="PageObjects\PublicPRO\SelectState.cs" />
+    <Compile Include="PageObjects\PublicPRO\SelectThisLabelOverlay.cs" />
+    <Compile Include="PageObjects\PublicPRO\SupportingDocuments.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\PublicPROTest.cs" />
   </ItemGroup>
@@ -108,7 +109,9 @@
     <Content Include="chromedriver.exe" />
     <Content Include="IEDriverServer.exe" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="PageObjects\StatePRO\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

@@ -70,14 +70,6 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects
         {
             Thread.Sleep(1000);
             permitNumSearchField.SendKeys(Keys.ArrowDown);
-            permitNumSearchField.SendKeys(Keys.ArrowDown);
-            permitNumSearchField.SendKeys(Keys.ArrowDown);
-            permitNumSearchField.SendKeys(Keys.ArrowDown);
-            permitNumSearchField.SendKeys(Keys.ArrowDown);
-            permitNumSearchField.SendKeys(Keys.ArrowDown);
-            permitNumSearchField.SendKeys(Keys.ArrowDown);
-            permitNumSearchField.SendKeys(Keys.ArrowDown);
-            permitNumSearchField.SendKeys(Keys.ArrowDown);
             permitNumSearchField.SendKeys(Keys.Enter);
 
             return new SelectCOLA();

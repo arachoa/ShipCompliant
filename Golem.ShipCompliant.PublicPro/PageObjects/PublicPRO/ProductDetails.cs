@@ -18,7 +18,7 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects
         Element abvTextBox = new Element("ABVTextbox", By.XPath("//input[@id='productAlcoholByVolume']"));
         Element bottlesPerCaseTextBox = new Element("BottlesPerCaseTextbox", By.XPath("//input[@name='product.NonWineItemsPerCase']"));
         Link addAnotherProduct = new Link(By.XPath("//a[@id='add-another-product']"));
-        Element productItemName = new Element("ProductItemName", By.XPath("//div[@class='review-item span product clearfix']//strong[contains(.,'Product 1')]"));
+        Element productItemName = new Element("ProductItemName", By.XPath("//span[@class='c1']/strong"));
         Element frontImage = new Element("FrontImage", By.XPath("//div[@class='labelIcon']/*[text()='Front']"));
         Element backImage = new Element("BackImage", By.XPath("//div[@class='labelIcon']/*[text()='Back']"));
         Element neckImage = new Element("NeckImage", By.XPath("//div[@class='labelIcon']/*[text()='Neck']"));

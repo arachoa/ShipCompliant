@@ -7,11 +7,11 @@ using ProtoTest.Golem.WebDriver;
 
 namespace Golem.ShipCompliant.PublicPro.Tests
 {
-    public class PublicPROTest : WebDriverTestBase
+    public class PublicPROApplicationTest : WebDriverTestBase
     {
         //Here's a line
        private string publicproUrl = Config.GetConfigValue("PublicProUrl", "http://publicpro-staging.shipcompliant.com");
-       private string permitnumber = Config.GetConfigValue("PermitNumber", "PERNOD RICARD USA, LLC");
+       private string permitnumber = Config.GetConfigValue("PermitNumber", "NY-I-15204");
        private string permittext = Config.GetConfigValue("PermitText", "NY-I-15204 - PERNOD RICARD USA, LLC");
        private string welcometext = Config.GetConfigValue("WelcomeText", "Welcome PERNOD RICARD USA, LLC!");
        private string colanumber = Config.GetConfigValue("COLANumber", "13233001000111");
@@ -38,6 +38,19 @@ namespace Golem.ShipCompliant.PublicPro.Tests
        private string bottlespercase2 = Config.GetConfigValue("BottlesPerCase2", "18");
        private string distributorlicense = Config.GetConfigValue("DistributorLicense", "18004018502");
        private string distributorname = Config.GetConfigValue("DistributorName", "EAGLE BEVERAGE");
+       private string bottlingfilepath = Config.GetConfigValue("BottlingFilePath", "C:\\Users\\Ara\\Desktop\\Test Bottling Letter1.pdf");
+       private string authorizationfilepath = Config.GetConfigValue("Authorizationfilepath", "C:\\Users\\Ara\\Desktop\\Test Brand Authorization Letter1.pdf");
+       private string appointmentfilepath = Config.GetConfigValue("Appointmentfilepath", "C:\\Users\\Ara\\Desktop\\Test Appointment Letter1.pdf");
+       private string testcomment = Config.GetConfigValue("TestComment", "QA Test Comment for State Administrator");
+       private string bottlingdoc = Config.GetConfigValue("BottlingDoc", "Test Bottling Letter1.pdf");
+       private string authorizationdoc = Config.GetConfigValue("AuthorizationDoc", "Test Brand Authorization Letter1.pdf");
+       private string appointmentdoc = Config.GetConfigValue("AppointmentDoc", "Test Appointment Letter1.pdf");
+       private string creditcardnum = Config.GetConfigValue("CreditCardNum", "4111111111111111");
+       private string cvvnumber = Config.GetConfigValue("CVVNumber", "123");
+       private string creditmonth = Config.GetConfigValue("CreditMonth", "12");
+       
+
+
 
 
         [Test]
@@ -98,7 +111,22 @@ namespace Golem.ShipCompliant.PublicPro.Tests
 
                //Supporting Documents
                .VerifySupportingDocumentsHighlighted()
-               .UploadBottlingLetter();
+               .UploadBottlingLetter(bottlingfilepath)
+               .VerifyBottlingLetter(bottlingdoc)
+               .UploadAuthorizationLetter(authorizationfilepath)
+               .VerifyAuthorizationLetter(authorizationdoc)
+               .UploadAppointmentLetter(appointmentfilepath)
+               .VerifyAppointmentLetter(appointmentdoc)
+               .TypeComments(testcomment)
+               .SelectContinueReviewButton()
+               .EnterSigniture()
+               .SelectContinueButton()
+               .VerifyReviewSlider()
+               .VerifyStateRegistration()
+               .VerifyFeesSummary()
+               .VerifyTotalFees()
+               .VerifyCreditCardName(firstname, lastname);
+
               
 
                
