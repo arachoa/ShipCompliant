@@ -16,8 +16,15 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects.StatePRO
         Text alcoholPercentage = new Text(By.XPath("//table[@id='additional']/tbody/tr[4]/td[2]"));
         Text feeCollected = new Text(By.XPath("//table[@id='application-type-details']/tbody/tr/td[2]/div[@class='detail-data']"));
         Text filingDate = new Text(By.XPath("//table[@id='application-type-details']/tbody/tr/td[1]/div[10]"));
-        Text commentText = new Text(By.XPath("//div[@class='comment-body']"));
+        Text commentTextOne = new Text(By.XPath("//div[@class='comment-body']"));
         Text distributorName = new Text(By.XPath("//div[@id='licensee']/div/div[2]"));
+        Element homeTab = new Element("HomeTab", By.XPath("//div[@id='home-tab']/a[contains(.,'Home')]"));
+        Link editRegistration = new Link(By.XPath("//a[@class='fancy-link edit-registration' and contains(.,'Edit Registration')]"));
+        Text commentTextTwo = new Text(By.XPath("//div[@class='comment-list-item public-comment']/div[@class='comment-body']"));
+        Button approveButton = new Button(By.XPath("//span[@id='approve-button']"));
+        Button revokeButton = new Button(By.XPath("//a[@id='revoke-button']"));
+        Text commentOverlay = new Text(By.XPath("//textarea[@id='revoke-comment-text']"));
+        Button okButtonOverlay = new Button(By.XPath("//input[@id='ok-revoke-button']"));
 
 
         
@@ -57,18 +64,18 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects.StatePRO
             return this;
         }
 
-        public RegistrationDetailsPage VerifyFilingDate(string text)
+        public RegistrationDetailsPage VerifyFilingDate()
         {
             DateTime date = DateTime.Today;
-            string currentDate = date;
-            filingDate(text).Verify().Text(currentDate);
+            string currentDate = date.ToString();
+            filingDate.Verify().Text(currentDate);
 
             return this;
         }
 
         public RegistrationDetailsPage VerifyComment(string statecomment)
         {
-            commentText.Verify().Text(statecomment);
+            commentTextOne.Verify().Text(statecomment);
 
             return this;
         }
@@ -79,6 +86,46 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects.StatePRO
 
             return this;
         }
+
+        public ProcessRegistrationsPage SelectHomeMenu()
+        {
+            homeTab.Click();
+
+            return new ProcessRegistrationsPage();
+        }
+
+        public EditRegistrationPage SelectEditRegistration()
+        {
+            editRegistration.Click();
+
+            return new EditRegistrationPage();
+        }
+
+        public RegistrationDetailsPage VerifyCommentTwo(string franchisecomment)
+        {
+            commentTextTwo.Verify().Text(franchisecomment);
+
+            return this;
+        }
+
+        public ProcessRegistrationsPage SelectApproveButton()
+        {
+            approveButton.Click();
+
+            return new ProcessRegistrationsPage();
+        }
+
+        public ProcessRegistrationsPage RevokeRegistration(string testcommentoverlay)
+        {
+            revokeButton.Click();
+            commentOverlay.Text = testcommentoverlay;
+            okButtonOverlay.Click();
+
+            return new ProcessRegistrationsPage();
+        }
+
+
+
 
 
 

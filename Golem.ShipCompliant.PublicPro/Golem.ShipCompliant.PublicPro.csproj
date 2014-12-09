@@ -92,6 +92,7 @@
     <Compile Include="PageObjects\PublicPRO\SelectState.cs" />
     <Compile Include="PageObjects\PublicPRO\SelectThisLabelOverlay.cs" />
     <Compile Include="PageObjects\PublicPRO\SupportingDocuments.cs" />
+    <Compile Include="PageObjects\StatePRO\EditRegistrationPage.cs" />
     <Compile Include="PageObjects\StatePRO\ProcessRegistrationsPage.cs" />
     <Compile Include="PageObjects\StatePRO\LoginPage.cs" />
     <Compile Include="PageObjects\StatePRO\RegistrationDetailsPage.cs" />

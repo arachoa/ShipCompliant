@@ -17,18 +17,18 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects.StatePRO
         Element commentsIcon = new Element("CommentsIcon", By.XPath("//table[@id='search-results']/tbody/tr[1]//span[@class='new-comments-icon']"));
         Text stateCOLANumber = new Text(By.XPath("//table[@id='search-results']/tbody/tr[1]/td[6]"));
         Element viewDetailsIcon = new Element("ViewDetailsIcon", By.XPath("//table[@id='search-results']/tbody/tr[1]//span[@class='details-icon']"));
-
-
-
-        //public Element stateCOLANumber(string text)
-        //{
-        //    return new Element("COLANumber", By.XPath("//td[@class='details-link' and contains(.,'" + text + "')]"));
-        //}
+        Link clearSearch = new Link(By.XPath("//span[@class='fancy-link clear-filters' and contains(.,'Clear Search')]"));
+        Link showFilters = new Link(By.XPath("//span[@class='fancy-link' and contains(.,'Show Filters')]"));
+        Element labelTextBox = new Element("LabelTextBox", By.XPath("//input[@id='label-filters']"));
+        Button searchButton = new Button(By.XPath("//span[@id='search-btn']"));
+        Text searchRecordTTBID = new Text(By.XPath("//table[@id='search-results']/tbody/tr[1]/td[6]"));
+        Element approvedStatus = new Element("ApprovedStatus", By.XPath("//td[@class='details-link registration-status-approved']"));
+        Link logoutLink = new Link(By.XPath("//a[contains(.,'Logout')]"));
 
 
         public override void WaitForElements()
         {
-            newFilterTab.WaitUntil().Present();
+            //newFilterTab.WaitUntil().Present();
         }
 
         public ProcessRegistrationsPage VerifyWelcomeMessage(string stateusername)
@@ -60,7 +60,49 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects.StatePRO
             return new RegistrationDetailsPage();
         }
 
+        public ProcessRegistrationsPage SelectClearSearchLink()
+        {
+            clearSearch.Click();
 
+            return new ProcessRegistrationsPage();
+        }
+
+        public ProcessRegistrationsPage SelectShowFiltersLink()
+        {
+            showFilters.Click();
+
+            return new ProcessRegistrationsPage();
+        }
+
+        public ProcessRegistrationsPage SearchTTBID(string statecolanum)
+        {
+            labelTextBox.Text = statecolanum;
+            searchButton.Click();
+
+            return new ProcessRegistrationsPage();
+        }
+
+        public ProcessRegistrationsPage VerifySearchRecordTTBID(string statecolanum)
+        {
+            searchRecordTTBID.Verify().Text(statecolanum);
+
+            return this;
+        }
+
+        public ProcessRegistrationsPage VerifyApprovedStatus()
+        {
+            approvedStatus.Verify().Visible();
+            approvedStatus.Highlight();
+
+            return this;
+        }
+
+        public LoginPage SelectLogoutLink()
+        {
+            logoutLink.Click();
+
+            return new LoginPage();
+        }
 
 
 

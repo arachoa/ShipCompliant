@@ -20,7 +20,9 @@ namespace Golem.ShipCompliant.PublicPro.Tests
         private string feecollectedamount = Config.GetConfigValue("FeeCollectedAmount", "$50");
         private string statecomment = Config.GetConfigValue("StateComment", "QA Test Comment for State Administrator");
         private string statedistributor = Config.GetConfigValue("StateDistributor", "PERNOD RICARD USA, LLC");
-
+        private string franchisefilepath = Config.GetConfigValue("FranchiseFilePath", "C:\\Users\\Ara\\Desktop\\Test Franchise Agreement Letter1.pdf");
+        private string franchisecomment = Config.GetConfigValue("FranchiseComment", "QA Franchise Agreement Letter 1 added.");
+        private string testcommentoverlay = Config.GetConfigValue("TestCommentOverlay", "Test clean up");
 
 
 
@@ -40,12 +42,41 @@ namespace Golem.ShipCompliant.PublicPro.Tests
                 .VerifyBottleSizes(statebottlesizes)
                 .VerifyAlcoholValue(alcoholvalue)
                 .VerifyFeeCollected(feecollectedamount)
-                .VerifyFilingDate(text)
+                .VerifyFilingDate()
                 .VerifyComment(statecomment)
-                .VerifyDistributor(statedistributor);
+                .VerifyDistributor(statedistributor)
+                .SelectHomeMenu()
+                .SelectClearSearchLink()
+                .SelectShowFiltersLink()
+                .SearchTTBID(statecolanum)
+                .VerifySearchRecordTTBID(statecolanum)
+                .SelectViewDetailsIcon()
 
-                
+                //Edit Registration
+                .SelectEditRegistration()
+                .UploadFranchiseLetter(franchisefilepath)
+                .TypeFranchiseComment(franchisecomment)
+                .SelectSaveButton()
+                .VerifyCommentTwo(franchisecomment)
+                .SelectApproveButton()
+                .VerifyApprovedStatus()
+                .SelectLogoutLink();
 
         }
+
+
+        [Test]
+        public void CleanupRegistration()
+        {
+            OpenPage<LoginPage>(stateproUrl)
+                .LoginStatePro(stateusername, statepassword)
+                .SelectViewDetailsIcon()
+                .RevokeRegistration(testcommentoverlay)
+                .SelectLogoutLink();
+
+        }
+    
+        
     }
+
 }
