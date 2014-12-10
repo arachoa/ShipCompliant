@@ -15,7 +15,7 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects.StatePRO
         Text welcomeMessage = new Text(By.XPath("//span[@class='welcome ']"));
         Element newFilterTab = new Element("NewFilterTab", By.XPath("//div[@class='filter-tab active']"));
         Element commentsIcon = new Element("CommentsIcon", By.XPath("//table[@id='search-results']/tbody/tr[1]//span[@class='new-comments-icon']"));
-        Text stateCOLANumber = new Text(By.XPath("//table[@id='search-results']/tbody/tr[1]/td[6]"));
+        Text stateCOLANumber = new Text(By.XPath("//tr[./td[text()='Pernod Ricard USA']]/td[6]"));
         Element viewDetailsIcon = new Element("ViewDetailsIcon", By.XPath("//table[@id='search-results']/tbody/tr[1]//span[@class='details-icon']"));
         Link clearSearch = new Link(By.XPath("//span[@class='fancy-link clear-filters' and contains(.,'Clear Search')]"));
         Link showFilters = new Link(By.XPath("//span[@class='fancy-link' and contains(.,'Show Filters')]"));
