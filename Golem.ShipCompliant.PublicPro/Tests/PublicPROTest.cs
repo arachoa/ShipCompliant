@@ -126,11 +126,11 @@ namespace Golem.ShipCompliant.PublicPro.Tests
                .VerifyFeesSummary()
                .VerifyTotalFees()
                .VerifyCreditCardName(firstname, lastname)
-              // .TypeCreditCardInformation(creditcardnum, cvvnumber, creditmonth, zip)
+               .TypeCreditCardInformation(creditcardnum, cvvnumber, creditmonth, zip)
                .VerifyApplicantDetails(address1, address2, city, state, zip)
                .VerifyDocuments(bottlingdoc, authorizationdoc, appointmentdoc)
                .VerifyDistributorName()
-               .VerifyComments()
+               .VerifyComments(testcomment)
                .SelectSubmitButton()
                .VerifySubmitMessage();
 

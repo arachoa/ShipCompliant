@@ -21,7 +21,7 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects
         Text totalFeesTotal = new Text(By.XPath("//div[@class='fee-total']/div[@class='cell c4' and contains(.,'$60')]"));
         Text creditCardName = new Text(By.XPath("//input[@name='creditCard.NameOnCard']"));
         Element creditCardNumberField = new Element("CreditCardNumberField", By.XPath("//input[@name='creditCard.CardNumber']"));
-        Element ccvNumberField = new Element("CCVNumberField", By.XPath("//input[@name='creditCard.CVV']"));
+        Element cvvNumberField = new Element("CVVNumberField", By.XPath("//input[@name='creditCard.CVV']"));
         Dropdown monthExpirationField = new Dropdown(By.XPath("//select[@name='creditCard.ExpirationMonth']"));
         Dropdown yearExpirationField = new Dropdown(By.XPath("//select[@name='creditCard.ExpirationYear']"));
         Element billingZipField = new Element("BillingZipField", By.XPath("//input[@name='creditCard.BillingZip']"));
@@ -33,7 +33,7 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects
         Text appointmentLetterDoc = new Text(By.XPath("//div[@class='form-item review-box clearfix']/div[1]/div/a"));
         Text authorizationLetterDoc = new Text(By.XPath("//div[@class='form-item review-box clearfix']/div[3]/div/a"));
         Text distributorName = new Text(By.XPath("//span[@class='document-name' and contains(.,'EAGLE BEVERAGE')]"));
-        Text comments = new Text(By.XPath("//div[@class='review-item span' and contains(.,'QA Test Comment for State Adminstrator')]"));
+        Text comments = new Text(By.XPath("//div[@class='preStepWrapper']/div[4]/div/div"));
         Button submitButton = new Button(By.XPath("//a[@id='generateCaptureAndSubmit']"));
         Element submitMessage = new Element("SubmitMessage", By.XPath("//h2[contains(.,'Kansas has received your registration!')]"));
         
@@ -92,18 +92,18 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects
             return this;
         }
 
-        //public Review TypeCreditCardInformation(string creditcardnum, string cvvnumber, string creditmonth, string zip)
-        //{
-        //    creditCardNumberField.Text = creditcardnum;
-        //    cvvNumberField.Text = cvvnumber;
-        //    monthExpirationField.SelectOption(creditmonth);
-        //    DateTime date = DateTime.Now;
-        //    var currentYear = date.Year + 1;
-        //    yearExpirationField.SelectOption(currentYear);
-        //    billingZipField.Text = zip;
+        public Review TypeCreditCardInformation(string creditcardnum, string cvvnumber, string creditmonth, string zip)
+        {
+            creditCardNumberField.Text = creditcardnum;
+            cvvNumberField.Text = cvvnumber;
+            monthExpirationField.SelectOption(creditmonth);
+            DateTime date = DateTime.Now;
+            var currentYear = date.Year + 1;
+            yearExpirationField.SelectOption(currentYear.ToString());
+            billingZipField.Text = zip;
 
-        //    return new Review();
-        //}
+            return new Review();
+        }
 
         public Review VerifyApplicantDetails(string address1, string address2, string city, string state, string zip)
         {
@@ -132,10 +132,9 @@ namespace Golem.ShipCompliant.PublicPro.PageObjects
             return this;
         }
 
-        public Review VerifyComments()
+        public Review VerifyComments(string testcomment)
         {
-            comments.Verify().Visible();
-            comments.Highlight();
+            comments.Verify().Text(testcomment);
 
             return this;
         }
